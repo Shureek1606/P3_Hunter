@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+
+    public float rotateX = 60;
+    public float rotateY = 60;
+
+
+    public float vert;
+    public float horiz;
+ 
+
     void Update()
     {
-        
+        vert = Input.GetAxis("Vertical"); 
+        horiz = Input.GetAxis("Horizontal");
+
+        transform.Rotate(Vector3.up * rotateX * Time.deltaTime * horiz);
+
+        transform.Rotate(Vector3.back * rotateY * Time.deltaTime * vert);
+
     }
 }
