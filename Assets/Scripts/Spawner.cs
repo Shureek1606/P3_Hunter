@@ -3,11 +3,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject spider1;
-    void Update()
+    private void Start()
     {
-        if (Input.GetMouseButton(3))
-        {
-            Instantiate(spider1, transform.position, transform.rotation);
-        }
+        InvokeRepeating("SpiderSpawner", 10, 0.5f);
     }
+
+
+    void SpiderSpawner()
+    {
+        Instantiate(spider1, transform.position, transform.rotation);
+    }
+    
 }

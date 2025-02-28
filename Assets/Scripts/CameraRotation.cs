@@ -4,22 +4,27 @@ public class CameraRotation : MonoBehaviour
 {
 
 
-    public float rotateX = 60;
-    public float rotateY = 60;
+    public float rotateX = -60;
+    public float rotateY = +60;
 
 
     public float vert;
     public float horiz;
- 
+
+    void Start()
+    {
+        // Lock the cursor to the center of the screen
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void Update()
     {
-        vert = Input.GetAxis("Vertical"); 
-        horiz = Input.GetAxis("Horizontal");
+        vert = Input.GetAxis("Mouse Y"); 
+        horiz = Input.GetAxis("Mouse X");
 
         transform.Rotate(Vector3.up * rotateX * Time.deltaTime * horiz);
 
-        transform.Rotate(Vector3.back * rotateY * Time.deltaTime * vert);
+        transform.Rotate(Vector3.forward * rotateY * Time.deltaTime * vert);
 
     }
 }
